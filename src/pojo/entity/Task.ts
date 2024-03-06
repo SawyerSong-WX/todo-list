@@ -23,6 +23,20 @@ export class Task {
     @Column("longtext", { name: "content", comment: "任务详情" })
     content: string;
 
+    @ApiProperty({ description: '开始时间' })
+    @Column('timestamp', {
+      name: 'start_date',
+      comment: '开始时间',
+    })
+    startDate: Date;
+
+    @ApiProperty({ description: '结束时间' })
+    @Column('timestamp', {
+      name: 'end_date',
+      comment: '结束时间',
+    })
+    endDate: Date;
+
     @ApiProperty({ description: '状态' })
     @Column("tinyint", { name: "status", comment: "状态", unsigned: true })
     status: number;

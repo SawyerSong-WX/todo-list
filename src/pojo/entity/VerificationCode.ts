@@ -12,8 +12,8 @@ export class VerificationCode {
     email: string;
 
     @ApiProperty({ description: '验证码' })
-    @Column("int", { name: "code", comment: "验证码", unsigned: true })
-    code: number;
+    @Column("varchar", { name: "code", comment: "验证码", length: 255 })
+    code: string;
 
     @ApiProperty({ description: '类型：0 登录' })
     @Column("tinyint", { name: "type", comment: "类型：0 登录", unsigned: true })

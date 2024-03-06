@@ -15,6 +15,8 @@ CREATE TABLE `task` (
   `executor` bigint unsigned DEFAULT NULL COMMENT '执行者',
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标题',
   `content` longtext COMMENT '任务详情',
+  `start_date` timestamp NULL COMMENT '开始时间',
+  `end_date` timestamp NULL COMMENT '结束时间',
   `status` tinyint unsigned NOT NULL COMMENT '状态',
   `parent_id` bigint unsigned NOT NULL DEFAULT '0' COMMENT '父任务id, 0:无父任务',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -46,7 +48,7 @@ CREATE TABLE `user` (
 CREATE TABLE `verification_code` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '邮箱',
-  `code` int unsigned NOT NULL COMMENT '验证码',
+  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '验证码',
   `type` tinyint unsigned DEFAULT '0' COMMENT '类型：0 登录',
   `status` tinyint unsigned DEFAULT '0' COMMENT '状态：0 未使用，1 已使用',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

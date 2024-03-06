@@ -4,9 +4,21 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
 import { ScheduleModule } from '@nestjs/schedule';
 import { HttpModule } from '@nestjs/axios';
+import { UserController } from './controller/user.controller';
+import { UserService } from './service/user.service';
+import { EmailService } from './service/email.service';
+import { User } from './pojo/entity/User';
+import { Task } from './pojo/entity/Task';
+import { TaskFollow } from './pojo/entity/TaskFollow';
+import { VerificationCode } from './pojo/entity/VerificationCode';
+import { Comment } from './pojo/entity/comment';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.env']
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.MYSQL_HOST,
@@ -18,8 +30,15 @@ import { HttpModule } from '@nestjs/axios';
       entities: [`${__dirname}/**/entity/*{.ts,.js}`],
       ssl: false,
       autoLoadEntities: true,
-      logging: false,
+      logging: true,
     }),
+    TypeOrmModule.forFeature([
+      User,
+      Task,
+      TaskFollow,
+      Comment,
+      VerificationCode,
+    ]),
     JwtModule.register({
       global: true,
       secret: process.env.JWT_SECRET,
@@ -28,7 +47,7 @@ import { HttpModule } from '@nestjs/axios';
     ScheduleModule.forRoot(),
     HttpModule,
   ],
-  controllers: [AppController],
-  providers: [],
+  controllers: [AppController, UserController],
+  providers: [UserService, EmailService],
 })
 export class AppModule {}
