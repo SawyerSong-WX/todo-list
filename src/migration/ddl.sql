@@ -1,4 +1,6 @@
-CREATE TABLE `comment` (
+use todo_list;
+
+CREATE TABLE IF NOT EXISTS `comment` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `task_id` bigint unsigned NOT NULL COMMENT '任务id',
   `user_id` bigint unsigned DEFAULT NULL COMMENT '评论人',
@@ -9,7 +11,7 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `task` (
+CREATE TABLE IF NOT EXISTS `task` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `creator` bigint unsigned NOT NULL COMMENT '创建者',
   `team_id` bigint unsigned DEFAULT NULL COMMENT '团队id',
@@ -25,7 +27,7 @@ CREATE TABLE `task` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `task_follow` (
+CREATE TABLE IF NOT EXISTS `task_follow` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `task_id` bigint unsigned NOT NULL COMMENT '任务id',
   `user_id` bigint unsigned NOT NULL COMMENT '关注者',
@@ -34,7 +36,7 @@ CREATE TABLE `task_follow` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '邮箱',
   `nick_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '昵称',
@@ -47,7 +49,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `verification_code` (
+CREATE TABLE IF NOT EXISTS `verification_code` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '邮箱',
   `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '验证码',
@@ -67,7 +69,7 @@ CREATE TABLE `team` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `task_history` (
+CREATE TABLE IF NOT EXISTS `task_history` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `task_id` bigint unsigned NOT NULL COMMENT '任务id',
   `user_id` bigint unsigned NOT NULL COMMENT '操作人id',

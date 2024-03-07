@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mysql:8.3
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./src/migration:/docker-entrypoint-initdb.d/
+    ports:
+      - 13306:3306
+    expose:
+      - 3306
+    networks:
+      - todo-list
+    privileged: true
+    container_name: mysql
+
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=todo_list"
+      - "TZ=Asia/Shanghai"
+    command:
+      --default-time-zone="+8:00"
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --max_connections=1000
+      --innodb_lock_wait_timeout=500
+    
+  todo-server:
+    build: .
+    container_name: todo-server
+    ports:
+      - 3000:3000
+    environment:
+      - "DOCKER=true"
+      - "MYSQL_HOST=server_mysql"
+      - "MYSQL_PORT=3306"
+    networks:
+      - todo-list
+    depends_on:
+      - mysql
+    links:
+      - mysql:server_mysql
+networks:
+  todo-list:
+    driver: bridge

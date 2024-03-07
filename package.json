@@ -24,7 +24,6 @@
     "db:migrate:run": "yarn typeorm migration:run -- -d ./src/migration/data-source.ts",
     "db:migrate:revert": "yarn typeorm migration:revert -- -d ./src/migration/data-source.ts",
     "db:migrate:show": "yarn typeorm migration:show -- -d ./src/migration/data-source.ts",
-    "db:entity:create": "yarn typeorm entity:create ./src/pojo/entity/User",
     "precommit": "pretty-quick --staged"
   },
   "dependencies": {

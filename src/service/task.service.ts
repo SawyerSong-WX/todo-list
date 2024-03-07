@@ -4,7 +4,7 @@ import { TaskCreateDTO } from 'src/pojo/dto/taskCreate.dto';
 import { TaskListRequest } from 'src/pojo/dto/taskList.request';
 import { Task } from 'src/pojo/entity/Task';
 import { TaskFollow } from 'src/pojo/entity/TaskFollow';
-import { Comment } from 'src/pojo/entity/comment';
+import { Comment } from 'src/pojo/entity/Comment';
 import { User } from 'src/pojo/entity/User';
 import { BaseResponse } from 'src/pojo/response/base.response';
 import { taskErrorResponse } from 'src/pojo/response/error.code';
