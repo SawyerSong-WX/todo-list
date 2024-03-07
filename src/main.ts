@@ -14,7 +14,9 @@ async function bootstrap() {
   });
   app.enableCors();
   app.use(compression());
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({
+    forbidUnknownValues: false
+  }));
   app.useGlobalFilters(new AllExceptionsFilter());
   const config = new DocumentBuilder()
     .setTitle('Backend server api')

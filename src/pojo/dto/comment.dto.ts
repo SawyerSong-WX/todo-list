@@ -3,7 +3,7 @@ import { IsNotEmpty } from "class-validator";
 
 export class CommentDTO {
 
-    @ApiProperty({ description: '任务id' })
+    @ApiProperty({ description: '任务id', default: '0' })
     @IsNotEmpty()
     taskId: string;
 
@@ -11,7 +11,7 @@ export class CommentDTO {
     @IsNotEmpty()
     content: string;
 
-    @ApiProperty({ description: '父评论' })
+    @ApiProperty({ description: '父评论', default: '0' })
     parentId: string;
 
 }

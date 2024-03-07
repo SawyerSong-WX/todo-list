@@ -31,9 +31,12 @@ export class TaskService {
     task.startDate = dto.startDate;
     task.endDate = dto.endDate;
     task.parentId = dto.parentId;
+    task.status = 0;
+    console.log(JSON.stringify(task))
     await this.dataSource.transaction(async manager => {
-      await manager.save(task);
+      task = await manager.save(task);
     });
+    console.log(JSON.stringify(task))
     return task;
   }
 

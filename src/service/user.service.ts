@@ -55,6 +55,7 @@ export class UserService {
     user.avatar =
       'https://bpic.51yuansu.com/pic2/cover/00/44/04/5813a95730ef7_610.jpg';
     user.email = email;
+    user.teamId = "0";
     user.nickName = `pwu ${Math.floor(Math.random() * 900000 + 100000)}`;
     let saveResult = await this.manager.save(User, user);
     return saveResult;
@@ -63,12 +64,6 @@ export class UserService {
   async login(userId: string, email: string, ip: string) {
     const payload = { email: email, id: userId };
     let token = this.jwtService.sign(payload);
-    // let loginHistory = new UserLoginHistory();
-    // loginHistory.userId = userId;
-    // loginHistory.ip = ip;
-    // loginHistory.success = 1;
-    // loginHistory.remark = '';
-    // await this.manager.save(UserLoginHistory, loginHistory);
     return BaseResponse.successWithData(token);
   }
 

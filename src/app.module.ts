@@ -15,6 +15,8 @@ import { Comment } from './pojo/entity/Comment';
 import { ConfigModule } from '@nestjs/config';
 import { TaskService } from './service/task.service';
 import { TaskController } from './controller/task.controller';
+import { JwtStrategy } from './common/guard/jwt.strategy';
+import { Team } from './pojo/entity/Team';
 
 @Module({
   imports: [
@@ -40,6 +42,7 @@ import { TaskController } from './controller/task.controller';
       TaskFollow,
       Comment,
       VerificationCode,
+      Team
     ]),
     JwtModule.register({
       global: true,
@@ -50,6 +53,6 @@ import { TaskController } from './controller/task.controller';
     HttpModule,
   ],
   controllers: [AppController, UserController, TaskController],
-  providers: [UserService, EmailService, TaskService],
+  providers: [JwtStrategy, UserService, EmailService, TaskService],
 })
 export class AppModule {}

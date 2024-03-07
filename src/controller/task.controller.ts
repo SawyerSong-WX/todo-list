@@ -27,8 +27,8 @@ export class TaskController {
       @Post('create')
       async create(@Body() dto: TaskCreateDTO, @Req() req) {
         let newTask = this.taskService.create(dto, req.user.id);
-        if (!newTask) return BaseResponse.successWithData(newTask);
-        return taskErrorResponse.createError;
+        if (!newTask) return taskErrorResponse.createError;
+        return BaseResponse.successWithData(newTask);
       }
 
       @ApiOperation({ summary: 'update task' })
@@ -40,7 +40,7 @@ export class TaskController {
 
       @ApiOperation({ summary: 'task list' })
       @ApiResponse({ status: 200, type: Task, isArray: true })
-      @Get('list')
+      @Post('list')
       async list(@Body() dto: TaskListRequest, @Req() req) {
         return this.taskService.list(dto, req.user.id);
       }
