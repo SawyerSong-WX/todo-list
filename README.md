@@ -3,6 +3,11 @@
 ```bash
 $ docker compose up -d
 ```
+## 访问
+
+```bash
+http://localhost:3000/api
+```
 
 ## 实现消息提醒任务即将到期
 
