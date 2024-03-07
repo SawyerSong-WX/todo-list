@@ -11,6 +11,10 @@ export class Task {
     @Column("bigint", { name: "creator", comment: "创建者", unsigned: true })
     creator: number;
 
+    @ApiProperty({ description: '团队id' })
+    @Column("bigint", { name: "team_id", comment: "团队id", unsigned: true })
+    teamId: number;
+
     @ApiProperty({ description: '执行者' })
     @Column("bigint", { name: "executor", comment: "执行者", unsigned: true })
     executor: number;

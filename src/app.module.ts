@@ -11,8 +11,10 @@ import { User } from './pojo/entity/User';
 import { Task } from './pojo/entity/Task';
 import { TaskFollow } from './pojo/entity/TaskFollow';
 import { VerificationCode } from './pojo/entity/VerificationCode';
-import { Comment } from './pojo/entity/comment';
+import { Comment } from './pojo/entity/Comment';
 import { ConfigModule } from '@nestjs/config';
+import { TaskService } from './service/task.service';
+import { TaskController } from './controller/task.controller';
 
 @Module({
   imports: [
@@ -47,7 +49,7 @@ import { ConfigModule } from '@nestjs/config';
     ScheduleModule.forRoot(),
     HttpModule,
   ],
-  controllers: [AppController, UserController],
-  providers: [UserService, EmailService],
+  controllers: [AppController, UserController, TaskController],
+  providers: [UserService, EmailService, TaskService],
 })
 export class AppModule {}

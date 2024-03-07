@@ -12,6 +12,7 @@ CREATE TABLE `comment` (
 CREATE TABLE `task` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `creator` bigint unsigned NOT NULL COMMENT '创建者',
+  `team_id` bigint unsigned DEFAULT NULL COMMENT '团队id',
   `executor` bigint unsigned DEFAULT NULL COMMENT '执行者',
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标题',
   `content` longtext COMMENT '任务详情',
@@ -40,6 +41,7 @@ CREATE TABLE `user` (
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '头像',
   `sex` tinyint unsigned DEFAULT '2' COMMENT '性别：0 男，1 女，2 未知',
   `descript` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '描述',
+  `team_id` bigint unsigned DEFAULT NULL COMMENT '团队id',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -53,5 +55,23 @@ CREATE TABLE `verification_code` (
   `status` tinyint unsigned DEFAULT '0' COMMENT '状态：0 未使用，1 已使用',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `team` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `creator` bigint unsigned NOT NULL COMMENT '创建者',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标题',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `task_history` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `task_id` bigint unsigned NOT NULL COMMENT '任务id',
+  `user_id` bigint unsigned NOT NULL COMMENT '操作人id',
+  `content` text COMMENT '操作内容',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

@@ -12,13 +12,9 @@ export class UserService {
   private readonly logger = new Logger(UserService.name);
   private manager: EntityManager;
 
-  private recoverStart: number = Number(process.env.ENERGY_RECOVERY_START) || 3;
-  private recoverInterval: number =
-    Number(process.env.ENERGY_RECOVERY_INTERVAL) || 360;
-
   constructor(
     private dataSource: DataSource,
-    private emailService: EmailService,
+    private readonly emailService: EmailService,
     private readonly jwtService: JwtService,
   ) {
     this.manager = dataSource.manager;

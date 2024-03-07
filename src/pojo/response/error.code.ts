@@ -5,6 +5,10 @@ export const userErrorResponse = {
   userNotExistError: BaseResponse.fail(6002, 'User is not exist'),
 };
 
+export const taskErrorResponse = {
+  createError: BaseResponse.fail(5001, 'Create task error'),
+};
+
 export const commonErrorResponse = {
   invalidArgs: BaseResponse.fail(1001, 'Invalid args'),
   notYours: BaseResponse.fail(1002, 'Item is not yours'),

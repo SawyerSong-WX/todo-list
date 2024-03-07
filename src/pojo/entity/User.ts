@@ -27,6 +27,10 @@ export class User {
     @Column("varchar", { name: "descript", comment: "描述", length: 255 })
     descript: string;
 
+    @ApiProperty({ description: '团队id' })
+    @Column("bigint", { name: "team_id", comment: "团队id", unsigned: true })
+    teamId: number;
+
     @ApiProperty({ description: '创建时间' })
     @Column('timestamp', {
       name: 'created_at',
