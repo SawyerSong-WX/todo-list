@@ -10,8 +10,4 @@ export class LoginDto {
   @IsNotEmpty()
   verifyCode: string;
 
-  @ApiProperty({ description: '组id', default: '0' })
-  @IsNotEmpty()
-  teamId: string;
-
 }
