@@ -5,7 +5,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 export class Team {
     @ApiProperty({ description: '主键' })
     @PrimaryGeneratedColumn({ type: 'bigint', name: 'id', unsigned: true })
-    id: number;
+    id: string;
 
     @ApiProperty({ description: '创建者' })
     @Column("bigint", { name: "creator", comment: "创建者", unsigned: true })

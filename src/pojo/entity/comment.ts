@@ -5,15 +5,15 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 export class Comment {
     @ApiProperty({ description: '主键' })
     @PrimaryGeneratedColumn({ type: 'bigint', name: 'id', unsigned: true })
-    id: number;
+    id: string;
 
     @ApiProperty({ description: '任务id' })
     @Column("bigint", { name: "task_id", comment: "任务id", unsigned: true })
-    taskId: number;
+    taskId: string;
 
     @ApiProperty({ description: '评论人' })
     @Column("bigint", { name: "user_id", comment: "评论人", unsigned: true })
-    userId: number;
+    userId: string;
 
     @ApiProperty({ description: '评论详情' })
     @Column("varchar", { name: "content", comment: "评论详情", length: 255 })
@@ -21,7 +21,7 @@ export class Comment {
 
     @ApiProperty({ description: '评论人' })
     @Column("bigint", { name: "parent_id", comment: "评论人", unsigned: true })
-    parentId: number;
+    parentId: string;
 
     @ApiProperty({ description: '创建时间' })
     @Column('timestamp', {

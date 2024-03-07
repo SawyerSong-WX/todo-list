@@ -29,7 +29,7 @@ export class User {
 
     @ApiProperty({ description: '团队id' })
     @Column("bigint", { name: "team_id", comment: "团队id", unsigned: true })
-    teamId: number;
+    teamId: string;
 
     @ApiProperty({ description: '创建时间' })
     @Column('timestamp', {

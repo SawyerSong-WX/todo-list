@@ -5,10 +5,10 @@ export class TaskCreateDTO {
 
   @ApiProperty({ description: '团队id' })
   @IsNotEmpty()
-    teamId: number;
+    teamId: string;
 
     @ApiProperty({ description: '执行者' })
-    executor: number;
+    executor: string;
 
     @ApiProperty({ description: '标题' })
     @IsNotEmpty()
@@ -25,6 +25,6 @@ export class TaskCreateDTO {
     endDate: Date;
 
     @ApiProperty({ description: '父任务id, 0:无父任务' })
-    parentId: number;
+    parentId: string;
 
 }

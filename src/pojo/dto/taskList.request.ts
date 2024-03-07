@@ -11,10 +11,10 @@ export class TaskListRequest {
   id: string;
 
   @ApiProperty({ description: '创建者' })
-  creator: string;
+  creator: number;
 
   @ApiProperty({ description: '执行者' })
-  executor: string;
+  executor: number;
 
   @ApiProperty({ description: '标题' })
   title: string;

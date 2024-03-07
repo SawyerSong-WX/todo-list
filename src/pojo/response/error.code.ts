@@ -7,6 +7,11 @@ export const userErrorResponse = {
 
 export const taskErrorResponse = {
   createError: BaseResponse.fail(5001, 'Create task error'),
+  notExistError: BaseResponse.fail(5002, 'Task is not exist'),
+  notYoursError: BaseResponse.fail(5003, 'Task is not yours'),
+  notSameTeamError: BaseResponse.fail(5004, 'Task is not your team'),
+  alreadyFollowError: BaseResponse.fail(5005, 'Task is already followed'),
+  notFollowError: BaseResponse.fail(5006, 'Task is not followed'),
 };
 
 export const commonErrorResponse = {

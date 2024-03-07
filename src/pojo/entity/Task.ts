@@ -5,19 +5,19 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 export class Task {
     @ApiProperty({ description: '主键' })
     @PrimaryGeneratedColumn({ type: 'bigint', name: 'id', unsigned: true })
-    id: number;
+    id: string;
 
     @ApiProperty({ description: '创建者' })
     @Column("bigint", { name: "creator", comment: "创建者", unsigned: true })
-    creator: number;
+    creator: string;
 
     @ApiProperty({ description: '团队id' })
     @Column("bigint", { name: "team_id", comment: "团队id", unsigned: true })
-    teamId: number;
+    teamId: string;
 
     @ApiProperty({ description: '执行者' })
     @Column("bigint", { name: "executor", comment: "执行者", unsigned: true })
-    executor: number;
+    executor: string;
 
     @ApiProperty({ description: '标题' })
     @Column("varchar", { name: "title", comment: "标题", length: 255 })
@@ -47,7 +47,7 @@ export class Task {
 
     @ApiProperty({ description: '父任务id, 0:无父任务' })
     @Column("bigint", { name: "parent_id", comment: "父任务id, 0:无父任务", unsigned: true })
-    parentId: number;
+    parentId: string;
 
     @ApiProperty({ description: '创建时间' })
     @Column('timestamp', {

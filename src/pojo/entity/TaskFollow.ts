@@ -9,11 +9,11 @@ export class TaskFollow {
 
     @ApiProperty({ description: '任务id' })
     @Column("bigint", { name: "task_id", comment: "任务id", unsigned: true })
-    taskId: number;
+    taskId: string;
 
     @ApiProperty({ description: '评论人' })
     @Column("bigint", { name: "user_id", comment: "评论人", unsigned: true })
-    userId: number;
+    userId: string;
 
     @ApiProperty({ description: '创建时间' })
     @Column('timestamp', {
